@@ -1,14 +1,1201 @@
-System.register("chunks:///_virtual/Controller.ts",["./rollupPluginModLoBabelHelpers.js","cc"],(function(e){var n,t,o,r,i,s,l,c,a,u,p;return{setters:[function(e){n=e.applyDecoratedDescriptor,t=e.inheritsLoose,o=e.initializerDefineProperty,r=e.assertThisInitialized},function(e){i=e.cclegacy,s=e._decorator,l=e.Button,c=e.Label,a=e.Node,u=e.director,p=e.Component}],execute:function(){var f,d,v,h,S,b,g,y,m,L,x,E;i._RF.push({},"8300fHNR3FHobkLKp88a3Lw","Controller",void 0);var B=s.ccclass,O=s.property,N=s.executeInEditMode,D=s.disallowMultiple;e("Controller",(f=B("Controller"),d=N(!0),v=D(!0),h=O(l),S=O(l),b=O(c),f(g=d(g=v(((E=function(e){function n(){for(var n,t=arguments.length,i=new Array(t),s=0;s<t;s++)i[s]=arguments[s];return n=e.call.apply(e,[this].concat(i))||this,o(n,"nextButton",m,r(n)),o(n,"prevButton",L,r(n)),o(n,"currentSceneLabel",x,r(n)),n}t(n,e);var i=n.prototype;return i.onEnable=function(){var e,n;null==(e=this.nextButton)||e.node.on(a.EventType.MOUSE_DOWN,this.onLoadNextScene,this),null==(n=this.prevButton)||n.node.on(a.EventType.MOUSE_DOWN,this.onLoadPrevScene,this);var t=u.getScene().name;this.currentSceneLabel.string=t},i.onDisable=function(){var e,n;null==(e=this.nextButton)||e.node.off(a.EventType.MOUSE_DOWN,this.onLoadNextScene,this),null==(n=this.prevButton)||n.node.off(a.EventType.MOUSE_DOWN,this.onLoadPrevScene,this)},i.onFocusInEditor=function(){},i.onLoadNextScene=function(){var e=u.getScene().name,t=n.scenes.indexOf(e);t<n.scenes.length-1?t++:t=0,console.log(n.scenes[t]),u.loadScene(n.scenes[t])},i.onLoadPrevScene=function(){var e=u.getScene().name,t=n.scenes.indexOf(e);t>0?t--:t=n.scenes.length-1,console.log(n.scenes[t]),u.loadScene(n.scenes[t])},n}(p)).scenes=["sprite-shv","sprite-flow","sprite-mask","sprite-mask-front","sprite-mask-universal","sprite-mask-universal2","sprite-glitchArt","sprite-zoom","sprite-mosaic","sprite-distortion","sprite-outline"],m=n((y=E).prototype,"nextButton",[h],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return null}}),L=n(y.prototype,"prevButton",[S],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return null}}),x=n(y.prototype,"currentSceneLabel",[b],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return null}}),g=y))||g)||g)||g));i._RF.pop()}}}));
+System.register("chunks:///_virtual/Controller.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc'], function (exports) {
+  var _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, cclegacy, _decorator, Button, Label, Node, director, Component;
 
-System.register("chunks:///_virtual/debug-view-runtime-control.ts",["./rollupPluginModLoBabelHelpers.js","cc"],(function(t){var e,o,i,n,s,l,r,a,g,h,p,c,C,d,m,u,L;return{setters:[function(t){e=t.applyDecoratedDescriptor,o=t.inheritsLoose,i=t.initializerDefineProperty,n=t.assertThisInitialized},function(t){s=t.cclegacy,l=t._decorator,r=t.Node,a=t.Canvas,g=t.UITransform,h=t.instantiate,p=t.Label,c=t.Color,C=t.RichText,d=t.Toggle,m=t.Button,u=t.director,L=t.Component}],execute:function(){var f,M,b,v,T,S,x,E,I;s._RF.push({},"b2bd1+njXxJxaFY3ymm06WU","debug-view-runtime-control",void 0);var A=l.ccclass,y=l.property;t("DebugViewRuntimeControl",(f=A("internal.DebugViewRuntimeControl"),M=y(r),b=y(r),v=y(r),f((x=e((S=function(t){function e(){for(var e,o=arguments.length,s=new Array(o),l=0;l<o;l++)s[l]=arguments[l];return e=t.call.apply(t,[this].concat(s))||this,i(e,"compositeModeToggle",x,n(e)),i(e,"singleModeToggle",E,n(e)),i(e,"EnableAllCompositeModeButton",I,n(e)),e._single=0,e.strSingle=["No Single Debug","Vertex Color","Vertex Normal","Vertex Tangent","World Position","Vertex Mirror","Face Side","UV0","UV1","UV Lightmap","Project Depth","Linear Depth","Fragment Normal","Fragment Tangent","Fragment Binormal","Base Color","Diffuse Color","Specular Color","Transparency","Metallic","Roughness","Specular Intensity","IOR","Direct Diffuse","Direct Specular","Direct All","Env Diffuse","Env Specular","Env All","Emissive","Light Map","Shadow","AO","Fresnel","Direct Transmit Diffuse","Direct Transmit Specular","Env Transmit Diffuse","Env Transmit Specular","Transmit All","Direct Internal Specular","Env Internal Specular","Internal All","Fog"],e.strComposite=["Direct Diffuse","Direct Specular","Env Diffuse","Env Specular","Emissive","Light Map","Shadow","AO","Normal Map","Fog","Tone Mapping","Gamma Correction","Fresnel","Transmit Diffuse","Transmit Specular","Internal Specular","TT"],e.strMisc=["CSM Layer Coloration","Lighting With Albedo"],e.compositeModeToggleList=[],e.singleModeToggleList=[],e.miscModeToggleList=[],e.textComponentList=[],e.labelComponentList=[],e.textContentList=[],e.hideButtonLabel=void 0,e._currentColorIndex=0,e.strColor=["<color=#ffffff>","<color=#000000>","<color=#ff0000>","<color=#00ff00>","<color=#0000ff>"],e.color=[c.WHITE,c.BLACK,c.RED,c.GREEN,c.BLUE],e}o(e,t);var s=e.prototype;return s.start=function(){if(this.node.parent.getComponent(a)){var t=this.node.parent.getComponent(g),e=.5*t.width,o=.5*t.height,i=.1*e-e,n=o-.1*o,s=this.node.getChildByName("MiscMode"),l=h(s);l.parent=this.node,l.name="Buttons";var r=h(s);r.parent=this.node,r.name="Titles";for(var u=0;u<2;u++){var L=h(this.EnableAllCompositeModeButton.getChildByName("Label"));L.setPosition(i+(u>0?450:150),n,0),L.setScale(.75,.75,.75),L.parent=r;var f=L.getComponent(p);f.string=u?"----------Composite Mode----------":"----------Single Mode----------",f.color=c.WHITE,f.overflow=0,this.labelComponentList[this.labelComponentList.length]=f}n-=20;for(var M=0,b=0;b<this.strSingle.length;b++,M++){b===this.strSingle.length>>1&&(i+=200,M=0);var v=b?h(this.singleModeToggle):this.singleModeToggle;v.setPosition(i,n-20*M,0),v.setScale(.5,.5,.5),v.parent=this.singleModeToggle.parent;var T=v.getComponentInChildren(C);T.string=this.strSingle[b],this.textComponentList[this.textComponentList.length]=T,this.textContentList[this.textContentList.length]=T.string,v.on(d.EventType.TOGGLE,this.toggleSingleMode,this),this.singleModeToggleList[b]=v}i+=200,this.EnableAllCompositeModeButton.setPosition(i+15,n,0),this.EnableAllCompositeModeButton.setScale(.5,.5,.5),this.EnableAllCompositeModeButton.on(m.EventType.CLICK,this.enableAllCompositeMode,this),this.EnableAllCompositeModeButton.parent=l;var S=this.EnableAllCompositeModeButton.getComponentInChildren(p);this.labelComponentList[this.labelComponentList.length]=S;var x=h(this.EnableAllCompositeModeButton);x.setPosition(i+90,n,0),x.setScale(.5,.5,.5),x.on(m.EventType.CLICK,this.changeTextColor,this),x.parent=l,(S=x.getComponentInChildren(p)).string="TextColor",this.labelComponentList[this.labelComponentList.length]=S;var E=h(this.EnableAllCompositeModeButton);E.setPosition(i+200,n,0),E.setScale(.5,.5,.5),E.on(m.EventType.CLICK,this.hideUI,this),E.parent=this.node.parent,(S=E.getComponentInChildren(p)).string="Hide UI",this.labelComponentList[this.labelComponentList.length]=S,this.hideButtonLabel=S,n-=40;for(var I=0;I<this.strMisc.length;I++){var A=h(this.compositeModeToggle);A.setPosition(i,n-20*I,0),A.setScale(.5,.5,.5),A.parent=s;var y=A.getComponentInChildren(C);y.string=this.strMisc[I],this.textComponentList[this.textComponentList.length]=y,this.textContentList[this.textContentList.length]=y.string,A.getComponent(d).isChecked=!!I,A.on(d.EventType.TOGGLE,I?this.toggleLightingWithAlbedo:this.toggleCSMColoration,this),this.miscModeToggleList[I]=A}n-=150;for(var D=0;D<this.strComposite.length;D++){var B=D?h(this.compositeModeToggle):this.compositeModeToggle;B.setPosition(i,n-20*D,0),B.setScale(.5,.5,.5),B.parent=this.compositeModeToggle.parent;var w=B.getComponentInChildren(C);w.string=this.strComposite[D],this.textComponentList[this.textComponentList.length]=w,this.textContentList[this.textContentList.length]=w.string,B.on(d.EventType.TOGGLE,this.toggleCompositeMode,this),this.compositeModeToggleList[D]=B}}else console.error("debug-view-runtime-control should be child of Canvas")},s.isTextMatched=function(t,e){var o=new String(t),i=o.search(">");return-1===i?t===e:(o=(o=o.substr(i+1)).substr(0,o.search("<")))===e},s.toggleSingleMode=function(t){for(var e=u.root.debugView,o=t.getComponentInChildren(C),i=0;i<this.strSingle.length;i++)this.isTextMatched(o.string,this.strSingle[i])&&(e.singleMode=i)},s.toggleCompositeMode=function(t){for(var e=u.root.debugView,o=t.getComponentInChildren(C),i=0;i<this.strComposite.length;i++)this.isTextMatched(o.string,this.strComposite[i])&&e.enableCompositeMode(i,t.isChecked)},s.toggleLightingWithAlbedo=function(t){u.root.debugView.lightingWithAlbedo=t.isChecked},s.toggleCSMColoration=function(t){u.root.debugView.csmLayerColoration=t.isChecked},s.enableAllCompositeMode=function(t){var e=u.root.debugView;e.enableAllCompositeMode(!0);for(var o=0;o<this.compositeModeToggleList.length;o++){this.compositeModeToggleList[o].getComponent(d).isChecked=!0}var i=this.miscModeToggleList[0].getComponent(d);i.isChecked=!1,e.csmLayerColoration=!1,(i=this.miscModeToggleList[1].getComponent(d)).isChecked=!0,e.lightingWithAlbedo=!0},s.hideUI=function(t){var e=this.node.getChildByName("Titles"),o=!e.active;this.singleModeToggleList[0].parent.active=o,this.miscModeToggleList[0].parent.active=o,this.compositeModeToggleList[0].parent.active=o,this.EnableAllCompositeModeButton.parent.active=o,e.active=o,this.hideButtonLabel.string=o?"Hide UI":"Show UI"},s.changeTextColor=function(t){this._currentColorIndex++,this._currentColorIndex>=this.strColor.length&&(this._currentColorIndex=0);for(var e=0;e<this.textComponentList.length;e++)this.textComponentList[e].string=this.strColor[this._currentColorIndex]+this.textContentList[e]+"</color>";for(var o=0;o<this.labelComponentList.length;o++)this.labelComponentList[o].color=this.color[this._currentColorIndex]},s.onLoad=function(){},s.update=function(t){},e}(L)).prototype,"compositeModeToggle",[M],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return null}}),E=e(S.prototype,"singleModeToggle",[b],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return null}}),I=e(S.prototype,"EnableAllCompositeModeButton",[v],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return null}}),T=S))||T));s._RF.pop()}}}));
+  return {
+    setters: [function (module) {
+      _applyDecoratedDescriptor = module.applyDecoratedDescriptor;
+      _inheritsLoose = module.inheritsLoose;
+      _initializerDefineProperty = module.initializerDefineProperty;
+      _assertThisInitialized = module.assertThisInitialized;
+    }, function (module) {
+      cclegacy = module.cclegacy;
+      _decorator = module._decorator;
+      Button = module.Button;
+      Label = module.Label;
+      Node = module.Node;
+      director = module.director;
+      Component = module.Component;
+    }],
+    execute: function () {
+      var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _class, _class2, _descriptor, _descriptor2, _descriptor3, _class3;
 
-System.register("chunks:///_virtual/EffectController.ts",["./rollupPluginModLoBabelHelpers.js","cc"],(function(e){var t,r,n,i,o,a,l,u,s,c,p,h,m,b,f,g,v,d,y,C,V,P;return{setters:[function(e){t=e.applyDecoratedDescriptor,r=e.inheritsLoose,n=e.initializerDefineProperty,i=e.assertThisInitialized},function(e){o=e.cclegacy,a=e._decorator,l=e.Enum,u=e.Color,s=e.CCInteger,c=e.Vec4,p=e.Texture2D,h=e.CCBoolean,m=e.Material,b=e.Layout,f=e.Prefab,g=e.Sprite,v=e.instantiate,d=e.Label,y=e.Button,C=e.EventHandler,V=e.Slider,P=e.Component}],execute:function(){var w,E,M,N,I,x,z,T,S,R,k,D,F,L,A,B,H,_,j,O,q,G,K,U,Z,J,Q,W,X,Y,$,ee,te,re,ne,ie,oe,ae;o._RF.push({},"5eabfnjIwhFmqOHvHs0AvZ+","EffectController",void 0);var le=a.ccclass,ue=a.property,se=a.executeInEditMode,ce=a.disallowMultiple,pe=function(e){return e[e.Color=0]="Color",e[e.Number=1]="Number",e[e.RangeNumber=2]="RangeNumber",e[e.Vector=3]="Vector",e[e.Texture=4]="Texture",e}(pe||{});l(pe);var he=(w=le("MaterialProperty"),E=ue(String),M=ue({type:pe}),N=ue({type:[u],visible:function(){return this.type==pe.Color}}),I=ue({type:s,range:[1,4,1],visible:function(){return this.type==pe.Vector}}),x=ue({type:c,visible:function(){return this.type==pe.Vector}}),z=ue({type:p,visible:function(){return this.type==pe.Texture}}),T=ue({type:Number,visible:function(){return this.type==pe.Number||this.type==pe.RangeNumber}}),S=ue({type:Number,visible:function(){return this.type==pe.RangeNumber||this.type==pe.Vector}}),R=ue({type:Number,visible:function(){return this.type==pe.RangeNumber||this.type==pe.Vector}}),w((F=t((D=function(){function e(e){n(this,"name",F,this),n(this,"type",L,this),n(this,"colorValue",A,this),n(this,"sliderCount",B,this),n(this,"vectorValue",H,this),n(this,"textureValue",_,this),n(this,"numberValue",j,this),n(this,"min",O,this),n(this,"max",q,this)}var t=e.prototype;return t.progressToValue=function(e){return this.min+(this.max-this.min)*e},t.valueToProgress=function(e){return void 0!==e?(e-this.min)/(this.max-this.min):(this.numberValue-this.min)/(this.max-this.min)},e}()).prototype,"name",[E],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return""}}),L=t(D.prototype,"type",[M],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return pe.RangeNumber}}),A=t(D.prototype,"colorValue",[N],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return[u.BLACK,u.GREEN]}}),B=t(D.prototype,"sliderCount",[I],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return 4}}),H=t(D.prototype,"vectorValue",[x],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return new c}}),_=t(D.prototype,"textureValue",[z],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return null}}),j=t(D.prototype,"numberValue",[T],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return 0}}),O=t(D.prototype,"min",[S],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return 0}}),q=t(D.prototype,"max",[R],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return 1}}),k=D))||k);e("EffectController",(G=le("EffectController"),K=se(!0),U=ce(!0),Z=ue(h),J=ue({type:m,visible:function(){return this.addMaterial}}),Q=ue([he]),W=ue(b),X=ue(f),Y=ue(f),G($=K($=U((te=t((ee=function(e){function t(){for(var t,r=arguments.length,o=new Array(r),a=0;a<r;a++)o[a]=arguments[a];return t=e.call.apply(e,[this].concat(o))||this,n(t,"addMaterial",te,i(t)),n(t,"materialList",re,i(t)),n(t,"properties",ne,i(t)),n(t,"valueItemContainer",ie,i(t)),n(t,"colorPrefab",oe,i(t)),n(t,"rangeNumberPrefab",ae,i(t)),t.material=void 0,t.propertiesMap=new Map,t}r(t,e);var o=t.prototype;return o.onFocusInEditor=function(){this.clear(),this.init()},o.onEnable=function(){this.clear(),this.init()},o.onDisable=function(){this.clear()},o.init=function(){var e,t,r=this;null!=this.valueItemContainer&&0!=this.properties.length&&(this.material=null==(e=this.node.getComponent(g))?void 0:e.sharedMaterial,this.propertiesMap.clear(),this.properties.forEach((function(e){r.propertiesMap.set(e.name,e)})),null==(t=this.properties)||t.forEach((function(e,t){r.createValueItem(e)})))},o.clear=function(){var e,t;null==(e=this.valueItemContainer)||e.node.destroyAllChildren(),null==(t=this.valueItemContainer)||t.node.removeAllChildren(),this.propertiesMap.clear()},o.setMaterialProperty=function(e,t){var r;null==(r=this.material)||r.setProperty(e,t),this.materialList.forEach((function(r){null==r||r.setProperty(e,t)}))},o.createValueItem=function(e){switch(e.type){case pe.Color:this.initColor(e);break;case pe.Number:break;case pe.RangeNumber:this.initSlider(e);break;case pe.Vector:this.initVectorSlider(e);break;case pe.Texture:break;default:console.error("Unknown property type: "+e.type)}},o.initColor=function(e){var t=this;if(this.colorPrefab){var r=v(this.colorPrefab);this.valueItemContainer.node.addChild(r),r.active=!0,r.getComponentsInChildren(d)[0].string=e.name,this.setMaterialProperty(e.name,e.colorValue[0]);var n=r.getComponentInChildren(b),i=r.children[0];i.active=!1,e.colorValue.forEach((function(r,o){var a=v(i);a.active=!0,a.parent=n.node,a.getComponent(g).color=r;var l=a.getComponent(y);l.transition=y.Transition.NONE;var u=new C;u.target=t.node,u.component="EffectController",u.handler="onColorChangeValue",u.customEventData=e.name,l.clickEvents.push(u)}))}else console.error("numberPrefab is null")},o.onColorChangeValue=function(e,t){var r=this.propertiesMap.get(t),n=e.target.getComponent(g).color;r.colorValue[0]=n,this.setMaterialProperty(r.name,n)},o.initSlider=function(e){if(this.rangeNumberPrefab){var t=v(this.rangeNumberPrefab);this.valueItemContainer.node.addChild(t),t.active=!0;var r=t.getComponentsInChildren(d);r[0].string=e.name,r[1].string=e.numberValue.toFixed(2),this.setMaterialProperty(e.name,e.numberValue);var n=t.getComponent(V);n.progress=e.valueToProgress();var i=new C;i.target=this.node,i.component="EffectController",i.handler="onSliderChangeValue",i.customEventData=e.name,null==n||n.slideEvents.push(i)}else console.error("numberPrefab is null")},o.onSliderChangeValue=function(e,t){var r=this.propertiesMap.get(t),n=r.progressToValue(e.progress);this.setMaterialProperty(r.name,n),e.getComponentsInChildren(d)[1].string=n.toFixed(2)},o.initVectorSlider=function(e){for(var t=e.vectorValue,r=["x","y","z","w"],n=0;n<e.sliderCount;n++){var i=r[n],o=t[i],a=v(this.rangeNumberPrefab);this.valueItemContainer.node.addChild(a),a.active=!0;var l=a.getComponentsInChildren(d);l[0].string=e.name+"."+i,l[1].string=o.toFixed(2);var u=a.getComponent(V);u.progress=e.valueToProgress(o);var s=new C;s.target=this.node,s.component="EffectController",s.handler="onVectorSliderChangeValue",s.customEventData=e.name+"."+i,null==u||u.slideEvents.push(s)}this.setMaterialProperty(e.name,t)},o.onVectorSliderChangeValue=function(e,t){var r=t.split("."),n=r[0],i=this.propertiesMap.get(n),o=i.progressToValue(e.progress);e.getComponentsInChildren(d)[1].string=o.toFixed(2);var a=r[1],l=i.vectorValue;l[a]=o,this.setMaterialProperty(i.name,l)},t}(P)).prototype,"addMaterial",[Z],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return!1}}),re=t(ee.prototype,"materialList",[J],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return[]}}),ne=t(ee.prototype,"properties",[Q],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return[]}}),ie=t(ee.prototype,"valueItemContainer",[W],{configurable:!0,enumerable:!0,writable:!0,initializer:null}),oe=t(ee.prototype,"colorPrefab",[X],{configurable:!0,enumerable:!0,writable:!0,initializer:null}),ae=t(ee.prototype,"rangeNumberPrefab",[Y],{configurable:!0,enumerable:!0,writable:!0,initializer:null}),$=ee))||$)||$)||$));o._RF.pop()}}}));
+      cclegacy._RF.push({}, "8300fHNR3FHobkLKp88a3Lw", "Controller", undefined);
 
-System.register("chunks:///_virtual/main",["./debug-view-runtime-control.ts","./Controller.ts","./EffectController.ts","./SpriteMask.ts","./SpriteZoom.ts"],(function(){return{setters:[null,null,null,null,null],execute:function(){}}}));
+      var ccclass = _decorator.ccclass,
+          property = _decorator.property,
+          executeInEditMode = _decorator.executeInEditMode,
+          disallowMultiple = _decorator.disallowMultiple;
+      var Controller = exports('Controller', (_dec = ccclass('Controller'), _dec2 = executeInEditMode(true), _dec3 = disallowMultiple(true), _dec4 = property(Button), _dec5 = property(Button), _dec6 = property(Label), _dec(_class = _dec2(_class = _dec3(_class = (_class2 = (_class3 = /*#__PURE__*/function (_Component) {
+        _inheritsLoose(Controller, _Component);
 
-System.register("chunks:///_virtual/SpriteMask.ts",["./rollupPluginModLoBabelHelpers.js","cc"],(function(e){var t,i,n,r,o,a,l,u,s,c,p,f,h;return{setters:[function(e){t=e.applyDecoratedDescriptor,i=e.inheritsLoose,n=e.initializerDefineProperty,r=e.assertThisInitialized},function(e){o=e.cclegacy,a=e._decorator,l=e.Material,u=e.Texture2D,s=e.Sprite,c=e.Node,p=e.view,f=e.Vec2,h=e.Component}],execute:function(){var d,y,b,g,m,v,M,E,z,w,S,x,T;o._RF.push({},"ecf0f/zAL5GtKt8rqRIhmEQ","SpriteMask",void 0);var _=a.ccclass,k=a.property,D=a.executeInEditMode,I=a.disallowMultiple;e("SpriteMask",(d=_("SpriteMask"),y=D(!0),b=I(!0),g=k(l),m=k(u),v=k({range:[.01,.5],slide:!0,step:.01}),M=k({range:[0,.2],slide:!0,step:.01}),d(E=y(E=b((w=t((z=function(e){function t(){for(var t,i=arguments.length,o=new Array(i),a=0;a<i;a++)o[a]=arguments[a];return t=e.call.apply(e,[this].concat(o))||this,n(t,"material",w,r(t)),n(t,"frontTexture",S,r(t)),n(t,"size",x,r(t)),n(t,"smoothness",T,r(t)),t}i(t,e);var o=t.prototype;return o.start=function(){},o.onEnable=function(){var e=this.getComponent(s);this.material=e.sharedMaterial,this.node.on(c.EventType.MOUSE_MOVE,(function(e){if(0===e.getButton()){var t=e.getLocation();this.updateZoomCenter(t)}}),this)},o.onDisable=function(){this.node.off(c.EventType.MOUSE_MOVE)},o.updateZoomCenter=function(e){var t,i=p.getVisibleSize(),n=new f(e.x/i.width,e.y/i.height);n.y=1-n.y,null==(t=this.material)||t.setProperty("center",n)},o.onFocusInEditor=function(){console.log("onFocusInEditor")},o.update=function(e){},t}(h)).prototype,"material",[g],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return null}}),S=t(z.prototype,"frontTexture",[m],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return null}}),x=t(z.prototype,"size",[v],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return.3}}),T=t(z.prototype,"smoothness",[M],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return.01}}),E=z))||E)||E)||E));o._RF.pop()}}}));
+        function Controller() {
+          var _this;
 
-System.register("chunks:///_virtual/SpriteZoom.ts",["./rollupPluginModLoBabelHelpers.js","cc","./env"],(function(e){var t,i,o,n,r,a,l,c,u,s,p,f,d;return{setters:[function(e){t=e.applyDecoratedDescriptor,i=e.inheritsLoose,o=e.initializerDefineProperty,n=e.assertThisInitialized},function(e){r=e.cclegacy,a=e._decorator,l=e.Material,c=e.Sprite,u=e.Node,s=e.view,p=e.Vec2,f=e.Component},function(e){d=e.EDITOR}],execute:function(){var g,m,h,y,b,v,E,z,w,M,S,F,I;r._RF.push({},"e8d24Ba3atBBI8tZ8ltP3Bs","SpriteZoom",void 0);var Z=a.ccclass,B=a.property,D=a.executeInEditMode,O=a.disallowMultiple;e("SpriteZoom",(g=Z("SpriteZoom"),m=D(!0),h=O(!0),y=B(l),b=B({range:[.01,.5],slide:!0,step:.01}),v=B({range:[0,.2],slide:!0,step:.01}),E=B({range:[-2,2],slide:!0,step:.01}),g(z=m(z=h((M=t((w=function(e){function t(){for(var t,i=arguments.length,r=new Array(i),a=0;a<i;a++)r[a]=arguments[a];return t=e.call.apply(e,[this].concat(r))||this,o(t,"material",M,n(t)),o(t,"size",S,n(t)),o(t,"edgeFactor",F,n(t)),o(t,"zoomFactor",I,n(t)),t}i(t,e);var r=t.prototype;return r.start=function(){},r.onEnable=function(){var e=this.getComponent(c);this.material=e.sharedMaterial,this.node.on(u.EventType.MOUSE_MOVE,(function(e){if(0===e.getButton()){var t=e.getLocation();this.updateZoomCenter(t)}}),this)},r.onDisable=function(){this.node.off(u.EventType.MOUSE_MOVE)},r.updateZoomCenter=function(e){var t,i=s.getVisibleSize(),o=new p(e.x/i.width,e.y/i.height);o.y=1-o.y,null==(t=this.material)||t.setProperty("center",o)},r.onFocusInEditor=function(){console.log("onFocusInEditor")},r.update=function(e){console.log("EDITOR:",d)},t}(f)).prototype,"material",[y],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return null}}),S=t(w.prototype,"size",[b],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return.3}}),F=t(w.prototype,"edgeFactor",[v],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return.1}}),I=t(w.prototype,"zoomFactor",[E],{configurable:!0,enumerable:!0,writable:!0,initializer:function(){return.2}}),z=w))||z)||z)||z));r._RF.pop()}}}));
+          for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+          }
+
+          _this = _Component.call.apply(_Component, [this].concat(args)) || this;
+
+          _initializerDefineProperty(_this, "nextButton", _descriptor, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "prevButton", _descriptor2, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "currentSceneLabel", _descriptor3, _assertThisInitialized(_this));
+
+          return _this;
+        }
+
+        var _proto = Controller.prototype;
+
+        _proto.onEnable = function onEnable() {
+          var _this$nextButton, _this$prevButton;
+
+          (_this$nextButton = this.nextButton) == null ? void 0 : _this$nextButton.node.on(Node.EventType.MOUSE_DOWN, this.onLoadNextScene, this);
+          (_this$prevButton = this.prevButton) == null ? void 0 : _this$prevButton.node.on(Node.EventType.MOUSE_DOWN, this.onLoadPrevScene, this);
+          var currentScene = director.getScene().name;
+          this.currentSceneLabel.string = currentScene;
+        };
+
+        _proto.onDisable = function onDisable() {
+          var _this$nextButton2, _this$prevButton2;
+
+          (_this$nextButton2 = this.nextButton) == null ? void 0 : _this$nextButton2.node.off(Node.EventType.MOUSE_DOWN, this.onLoadNextScene, this);
+          (_this$prevButton2 = this.prevButton) == null ? void 0 : _this$prevButton2.node.off(Node.EventType.MOUSE_DOWN, this.onLoadPrevScene, this);
+        };
+
+        _proto.onFocusInEditor = function onFocusInEditor() {};
+
+        _proto.onLoadNextScene = function onLoadNextScene() {
+          var currentScene = director.getScene().name;
+          var index = Controller.scenes.indexOf(currentScene);
+
+          if (index < Controller.scenes.length - 1) {
+            index++;
+          } else {
+            index = 0;
+          }
+
+          console.log(Controller.scenes[index]);
+          director.loadScene(Controller.scenes[index]);
+        };
+
+        _proto.onLoadPrevScene = function onLoadPrevScene() {
+          var currentScene = director.getScene().name;
+          var index = Controller.scenes.indexOf(currentScene);
+
+          if (index > 0) {
+            index--;
+          } else {
+            index = Controller.scenes.length - 1;
+          }
+
+          console.log(Controller.scenes[index]);
+          director.loadScene(Controller.scenes[index]);
+        };
+
+        return Controller;
+      }(Component), _class3.scenes = ["sprite-shv", "sprite-flow", "sprite-mask", "sprite-mask-front", "sprite-mask-universal", "sprite-mask-universal2", "sprite-glitchArt", "sprite-zoom", "sprite-mosaic", "sprite-distortion", "sprite-outline"], _class3), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, "nextButton", [_dec4], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, "prevButton", [_dec5], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, "currentSceneLabel", [_dec6], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      })), _class2)) || _class) || _class) || _class));
+
+      cclegacy._RF.pop();
+    }
+  };
+});
+
+System.register("chunks:///_virtual/debug-view-runtime-control.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc'], function (exports) {
+  var _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, cclegacy, _decorator, Node, Canvas, UITransform, instantiate, Label, Color, RichText, Toggle, Button, director, Component;
+
+  return {
+    setters: [function (module) {
+      _applyDecoratedDescriptor = module.applyDecoratedDescriptor;
+      _inheritsLoose = module.inheritsLoose;
+      _initializerDefineProperty = module.initializerDefineProperty;
+      _assertThisInitialized = module.assertThisInitialized;
+    }, function (module) {
+      cclegacy = module.cclegacy;
+      _decorator = module._decorator;
+      Node = module.Node;
+      Canvas = module.Canvas;
+      UITransform = module.UITransform;
+      instantiate = module.instantiate;
+      Label = module.Label;
+      Color = module.Color;
+      RichText = module.RichText;
+      Toggle = module.Toggle;
+      Button = module.Button;
+      director = module.director;
+      Component = module.Component;
+    }],
+    execute: function () {
+      var _dec, _dec2, _dec3, _dec4, _class, _class2, _descriptor, _descriptor2, _descriptor3;
+
+      cclegacy._RF.push({}, "b2bd1+njXxJxaFY3ymm06WU", "debug-view-runtime-control", undefined);
+
+      var ccclass = _decorator.ccclass,
+          property = _decorator.property;
+      var DebugViewRuntimeControl = exports('DebugViewRuntimeControl', (_dec = ccclass('internal.DebugViewRuntimeControl'), _dec2 = property(Node), _dec3 = property(Node), _dec4 = property(Node), _dec(_class = (_class2 = /*#__PURE__*/function (_Component) {
+        _inheritsLoose(DebugViewRuntimeControl, _Component);
+
+        function DebugViewRuntimeControl() {
+          var _this;
+
+          for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+          }
+
+          _this = _Component.call.apply(_Component, [this].concat(args)) || this;
+
+          _initializerDefineProperty(_this, "compositeModeToggle", _descriptor, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "singleModeToggle", _descriptor2, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "EnableAllCompositeModeButton", _descriptor3, _assertThisInitialized(_this));
+
+          _this._single = 0;
+          _this.strSingle = ['No Single Debug', 'Vertex Color', 'Vertex Normal', 'Vertex Tangent', 'World Position', 'Vertex Mirror', 'Face Side', 'UV0', 'UV1', 'UV Lightmap', 'Project Depth', 'Linear Depth', 'Fragment Normal', 'Fragment Tangent', 'Fragment Binormal', 'Base Color', 'Diffuse Color', 'Specular Color', 'Transparency', 'Metallic', 'Roughness', 'Specular Intensity', 'IOR', 'Direct Diffuse', 'Direct Specular', 'Direct All', 'Env Diffuse', 'Env Specular', 'Env All', 'Emissive', 'Light Map', 'Shadow', 'AO', 'Fresnel', 'Direct Transmit Diffuse', 'Direct Transmit Specular', 'Env Transmit Diffuse', 'Env Transmit Specular', 'Transmit All', 'Direct Internal Specular', 'Env Internal Specular', 'Internal All', 'Fog'];
+          _this.strComposite = ['Direct Diffuse', 'Direct Specular', 'Env Diffuse', 'Env Specular', 'Emissive', 'Light Map', 'Shadow', 'AO', 'Normal Map', 'Fog', 'Tone Mapping', 'Gamma Correction', 'Fresnel', 'Transmit Diffuse', 'Transmit Specular', 'Internal Specular', 'TT'];
+          _this.strMisc = ['CSM Layer Coloration', 'Lighting With Albedo'];
+          _this.compositeModeToggleList = [];
+          _this.singleModeToggleList = [];
+          _this.miscModeToggleList = [];
+          _this.textComponentList = [];
+          _this.labelComponentList = [];
+          _this.textContentList = [];
+          _this.hideButtonLabel = void 0;
+          _this._currentColorIndex = 0;
+          _this.strColor = ['<color=#ffffff>', '<color=#000000>', '<color=#ff0000>', '<color=#00ff00>', '<color=#0000ff>'];
+          _this.color = [Color.WHITE, Color.BLACK, Color.RED, Color.GREEN, Color.BLUE];
+          return _this;
+        }
+
+        var _proto = DebugViewRuntimeControl.prototype;
+
+        _proto.start = function start() {
+          // get canvas resolution
+          var canvas = this.node.parent.getComponent(Canvas);
+
+          if (!canvas) {
+            console.error('debug-view-runtime-control should be child of Canvas');
+            return;
+          }
+
+          var uiTransform = this.node.parent.getComponent(UITransform);
+          var halfScreenWidth = uiTransform.width * 0.5;
+          var halfScreenHeight = uiTransform.height * 0.5;
+          var x = -halfScreenWidth + halfScreenWidth * 0.1,
+              y = halfScreenHeight - halfScreenHeight * 0.1;
+          var width = 200,
+              height = 20; // new nodes
+
+          var miscNode = this.node.getChildByName('MiscMode');
+          var buttonNode = instantiate(miscNode);
+          buttonNode.parent = this.node;
+          buttonNode.name = 'Buttons';
+          var titleNode = instantiate(miscNode);
+          titleNode.parent = this.node;
+          titleNode.name = 'Titles'; // title
+
+          for (var i = 0; i < 2; i++) {
+            var newLabel = instantiate(this.EnableAllCompositeModeButton.getChildByName('Label'));
+            newLabel.setPosition(x + (i > 0 ? 50 + width * 2 : 150), y, 0.0);
+            newLabel.setScale(0.75, 0.75, 0.75);
+            newLabel.parent = titleNode;
+
+            var _labelComponent = newLabel.getComponent(Label);
+
+            _labelComponent.string = i ? '----------Composite Mode----------' : '----------Single Mode----------';
+            _labelComponent.color = Color.WHITE;
+            _labelComponent.overflow = 0;
+            this.labelComponentList[this.labelComponentList.length] = _labelComponent;
+          }
+
+          y -= height; // single
+
+          var currentRow = 0;
+
+          for (var _i = 0; _i < this.strSingle.length; _i++, currentRow++) {
+            if (_i === this.strSingle.length >> 1) {
+              x += width;
+              currentRow = 0;
+            }
+
+            var newNode = _i ? instantiate(this.singleModeToggle) : this.singleModeToggle;
+            newNode.setPosition(x, y - height * currentRow, 0.0);
+            newNode.setScale(0.5, 0.5, 0.5);
+            newNode.parent = this.singleModeToggle.parent;
+            var textComponent = newNode.getComponentInChildren(RichText);
+            textComponent.string = this.strSingle[_i];
+            this.textComponentList[this.textComponentList.length] = textComponent;
+            this.textContentList[this.textContentList.length] = textComponent.string;
+            newNode.on(Toggle.EventType.TOGGLE, this.toggleSingleMode, this);
+            this.singleModeToggleList[_i] = newNode;
+          }
+
+          x += width; // buttons
+
+          this.EnableAllCompositeModeButton.setPosition(x + 15, y, 0.0);
+          this.EnableAllCompositeModeButton.setScale(0.5, 0.5, 0.5);
+          this.EnableAllCompositeModeButton.on(Button.EventType.CLICK, this.enableAllCompositeMode, this);
+          this.EnableAllCompositeModeButton.parent = buttonNode;
+          var labelComponent = this.EnableAllCompositeModeButton.getComponentInChildren(Label);
+          this.labelComponentList[this.labelComponentList.length] = labelComponent;
+          var changeColorButton = instantiate(this.EnableAllCompositeModeButton);
+          changeColorButton.setPosition(x + 90, y, 0.0);
+          changeColorButton.setScale(0.5, 0.5, 0.5);
+          changeColorButton.on(Button.EventType.CLICK, this.changeTextColor, this);
+          changeColorButton.parent = buttonNode;
+          labelComponent = changeColorButton.getComponentInChildren(Label);
+          labelComponent.string = 'TextColor';
+          this.labelComponentList[this.labelComponentList.length] = labelComponent;
+          var HideButton = instantiate(this.EnableAllCompositeModeButton);
+          HideButton.setPosition(x + 200, y, 0.0);
+          HideButton.setScale(0.5, 0.5, 0.5);
+          HideButton.on(Button.EventType.CLICK, this.hideUI, this);
+          HideButton.parent = this.node.parent;
+          labelComponent = HideButton.getComponentInChildren(Label);
+          labelComponent.string = 'Hide UI';
+          this.labelComponentList[this.labelComponentList.length] = labelComponent;
+          this.hideButtonLabel = labelComponent; // misc
+
+          y -= 40;
+
+          for (var _i2 = 0; _i2 < this.strMisc.length; _i2++) {
+            var _newNode = instantiate(this.compositeModeToggle);
+
+            _newNode.setPosition(x, y - height * _i2, 0.0);
+
+            _newNode.setScale(0.5, 0.5, 0.5);
+
+            _newNode.parent = miscNode;
+
+            var _textComponent = _newNode.getComponentInChildren(RichText);
+
+            _textComponent.string = this.strMisc[_i2];
+            this.textComponentList[this.textComponentList.length] = _textComponent;
+            this.textContentList[this.textContentList.length] = _textComponent.string;
+
+            var toggleComponent = _newNode.getComponent(Toggle);
+
+            toggleComponent.isChecked = _i2 ? true : false;
+
+            _newNode.on(Toggle.EventType.TOGGLE, _i2 ? this.toggleLightingWithAlbedo : this.toggleCSMColoration, this);
+
+            this.miscModeToggleList[_i2] = _newNode;
+          } // composite
+
+
+          y -= 150;
+
+          for (var _i3 = 0; _i3 < this.strComposite.length; _i3++) {
+            var _newNode2 = _i3 ? instantiate(this.compositeModeToggle) : this.compositeModeToggle;
+
+            _newNode2.setPosition(x, y - height * _i3, 0.0);
+
+            _newNode2.setScale(0.5, 0.5, 0.5);
+
+            _newNode2.parent = this.compositeModeToggle.parent;
+
+            var _textComponent2 = _newNode2.getComponentInChildren(RichText);
+
+            _textComponent2.string = this.strComposite[_i3];
+            this.textComponentList[this.textComponentList.length] = _textComponent2;
+            this.textContentList[this.textContentList.length] = _textComponent2.string;
+
+            _newNode2.on(Toggle.EventType.TOGGLE, this.toggleCompositeMode, this);
+
+            this.compositeModeToggleList[_i3] = _newNode2;
+          }
+        };
+
+        _proto.isTextMatched = function isTextMatched(textUI, textDescription) {
+          var tempText = new String(textUI);
+          var findIndex = tempText.search('>');
+
+          if (findIndex === -1) {
+            return textUI === textDescription;
+          } else {
+            tempText = tempText.substr(findIndex + 1);
+            tempText = tempText.substr(0, tempText.search('<'));
+            return tempText === textDescription;
+          }
+        };
+
+        _proto.toggleSingleMode = function toggleSingleMode(toggle) {
+          var debugView = director.root.debugView;
+          var textComponent = toggle.getComponentInChildren(RichText);
+
+          for (var i = 0; i < this.strSingle.length; i++) {
+            if (this.isTextMatched(textComponent.string, this.strSingle[i])) {
+              debugView.singleMode = i;
+            }
+          }
+        };
+
+        _proto.toggleCompositeMode = function toggleCompositeMode(toggle) {
+          var debugView = director.root.debugView;
+          var textComponent = toggle.getComponentInChildren(RichText);
+
+          for (var i = 0; i < this.strComposite.length; i++) {
+            if (this.isTextMatched(textComponent.string, this.strComposite[i])) {
+              debugView.enableCompositeMode(i, toggle.isChecked);
+            }
+          }
+        };
+
+        _proto.toggleLightingWithAlbedo = function toggleLightingWithAlbedo(toggle) {
+          var debugView = director.root.debugView;
+          debugView.lightingWithAlbedo = toggle.isChecked;
+        };
+
+        _proto.toggleCSMColoration = function toggleCSMColoration(toggle) {
+          var debugView = director.root.debugView;
+          debugView.csmLayerColoration = toggle.isChecked;
+        };
+
+        _proto.enableAllCompositeMode = function enableAllCompositeMode(button) {
+          var debugView = director.root.debugView;
+          debugView.enableAllCompositeMode(true);
+
+          for (var i = 0; i < this.compositeModeToggleList.length; i++) {
+            var _toggleComponent = this.compositeModeToggleList[i].getComponent(Toggle);
+
+            _toggleComponent.isChecked = true;
+          }
+
+          var toggleComponent = this.miscModeToggleList[0].getComponent(Toggle);
+          toggleComponent.isChecked = false;
+          debugView.csmLayerColoration = false;
+          toggleComponent = this.miscModeToggleList[1].getComponent(Toggle);
+          toggleComponent.isChecked = true;
+          debugView.lightingWithAlbedo = true;
+        };
+
+        _proto.hideUI = function hideUI(button) {
+          var titleNode = this.node.getChildByName('Titles');
+          var activeValue = !titleNode.active;
+          this.singleModeToggleList[0].parent.active = activeValue;
+          this.miscModeToggleList[0].parent.active = activeValue;
+          this.compositeModeToggleList[0].parent.active = activeValue;
+          this.EnableAllCompositeModeButton.parent.active = activeValue;
+          titleNode.active = activeValue;
+          this.hideButtonLabel.string = activeValue ? 'Hide UI' : 'Show UI';
+        };
+
+        _proto.changeTextColor = function changeTextColor(button) {
+          this._currentColorIndex++;
+
+          if (this._currentColorIndex >= this.strColor.length) {
+            this._currentColorIndex = 0;
+          }
+
+          for (var i = 0; i < this.textComponentList.length; i++) {
+            this.textComponentList[i].string = this.strColor[this._currentColorIndex] + this.textContentList[i] + '</color>';
+          }
+
+          for (var _i4 = 0; _i4 < this.labelComponentList.length; _i4++) {
+            this.labelComponentList[_i4].color = this.color[this._currentColorIndex];
+          }
+        };
+
+        _proto.onLoad = function onLoad() {};
+
+        _proto.update = function update(deltaTime) {};
+
+        return DebugViewRuntimeControl;
+      }(Component), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, "compositeModeToggle", [_dec2], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, "singleModeToggle", [_dec3], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, "EnableAllCompositeModeButton", [_dec4], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      })), _class2)) || _class));
+
+      cclegacy._RF.pop();
+    }
+  };
+});
+
+System.register("chunks:///_virtual/EffectController.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc'], function (exports) {
+  var _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, cclegacy, _decorator, Enum, Color, CCInteger, Vec4, Texture2D, CCBoolean, Material, Layout, Prefab, Sprite, instantiate, Label, Button, EventHandler, Slider, Component;
+
+  return {
+    setters: [function (module) {
+      _applyDecoratedDescriptor = module.applyDecoratedDescriptor;
+      _inheritsLoose = module.inheritsLoose;
+      _initializerDefineProperty = module.initializerDefineProperty;
+      _assertThisInitialized = module.assertThisInitialized;
+    }, function (module) {
+      cclegacy = module.cclegacy;
+      _decorator = module._decorator;
+      Enum = module.Enum;
+      Color = module.Color;
+      CCInteger = module.CCInteger;
+      Vec4 = module.Vec4;
+      Texture2D = module.Texture2D;
+      CCBoolean = module.CCBoolean;
+      Material = module.Material;
+      Layout = module.Layout;
+      Prefab = module.Prefab;
+      Sprite = module.Sprite;
+      instantiate = module.instantiate;
+      Label = module.Label;
+      Button = module.Button;
+      EventHandler = module.EventHandler;
+      Slider = module.Slider;
+      Component = module.Component;
+    }],
+    execute: function () {
+      var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec10, _class, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7, _descriptor8, _descriptor9, _dec11, _dec12, _dec13, _dec14, _dec15, _dec16, _dec17, _dec18, _dec19, _class4, _class5, _descriptor10, _descriptor11, _descriptor12, _descriptor13, _descriptor14, _descriptor15;
+
+      cclegacy._RF.push({}, "5eabfnjIwhFmqOHvHs0AvZ+", "EffectController", undefined);
+
+      var ccclass = _decorator.ccclass,
+          property = _decorator.property,
+          executeInEditMode = _decorator.executeInEditMode,
+          disallowMultiple = _decorator.disallowMultiple;
+
+      var PropertyType = /*#__PURE__*/function (PropertyType) {
+        PropertyType[PropertyType["Color"] = 0] = "Color";
+        PropertyType[PropertyType["Number"] = 1] = "Number";
+        PropertyType[PropertyType["RangeNumber"] = 2] = "RangeNumber";
+        PropertyType[PropertyType["Vector"] = 3] = "Vector";
+        PropertyType[PropertyType["Texture"] = 4] = "Texture";
+        return PropertyType;
+      }(PropertyType || {});
+
+      Enum(PropertyType);
+      var MaterialProperty = (_dec = ccclass('MaterialProperty'), _dec2 = property(String), _dec3 = property({
+        type: PropertyType
+      }), _dec4 = property({
+        type: [Color],
+        visible: function visible() {
+          return this.type == PropertyType.Color;
+        }
+      }), _dec5 = property({
+        type: CCInteger,
+        range: [1, 4, 1],
+        visible: function visible() {
+          return this.type == PropertyType.Vector;
+        }
+      }), _dec6 = property({
+        type: Vec4,
+        visible: function visible() {
+          return this.type == PropertyType.Vector;
+        }
+      }), _dec7 = property({
+        type: Texture2D,
+        visible: function visible() {
+          return this.type == PropertyType.Texture;
+        }
+      }), _dec8 = property({
+        type: Number,
+        visible: function visible() {
+          return this.type == PropertyType.Number || this.type == PropertyType.RangeNumber;
+        }
+      }), _dec9 = property({
+        type: Number,
+        visible: function visible() {
+          return this.type == PropertyType.RangeNumber || this.type == PropertyType.Vector;
+        }
+      }), _dec10 = property({
+        type: Number,
+        visible: function visible() {
+          return this.type == PropertyType.RangeNumber || this.type == PropertyType.Vector;
+        }
+      }), _dec(_class = (_class2 = /*#__PURE__*/function () {
+        function MaterialProperty(parameters) {
+          _initializerDefineProperty(this, "name", _descriptor, this);
+
+          _initializerDefineProperty(this, "type", _descriptor2, this); //-----------Color----------
+
+
+          _initializerDefineProperty(this, "colorValue", _descriptor3, this); //-----------Vector----------
+
+
+          _initializerDefineProperty(this, "sliderCount", _descriptor4, this);
+
+          _initializerDefineProperty(this, "vectorValue", _descriptor5, this); //-----------Texture----------
+
+
+          _initializerDefineProperty(this, "textureValue", _descriptor6, this); //-----------Number----------
+
+
+          _initializerDefineProperty(this, "numberValue", _descriptor7, this); //Range Number Min
+
+
+          _initializerDefineProperty(this, "min", _descriptor8, this); //Range Number MAX
+
+
+          _initializerDefineProperty(this, "max", _descriptor9, this);
+        }
+
+        var _proto = MaterialProperty.prototype;
+
+        _proto.progressToValue = function progressToValue(progress) {
+          return this.min + (this.max - this.min) * progress;
+        };
+
+        _proto.valueToProgress = function valueToProgress(value) {
+          if (value !== undefined) {
+            return (value - this.min) / (this.max - this.min);
+          } else {
+            return (this.numberValue - this.min) / (this.max - this.min);
+          }
+        };
+
+        return MaterialProperty;
+      }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, "name", [_dec2], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return "";
+        }
+      }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, "type", [_dec3], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return PropertyType.RangeNumber;
+        }
+      }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, "colorValue", [_dec4], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return [Color.BLACK, Color.GREEN];
+        }
+      }), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, "sliderCount", [_dec5], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return 4;
+        }
+      }), _descriptor5 = _applyDecoratedDescriptor(_class2.prototype, "vectorValue", [_dec6], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return new Vec4();
+        }
+      }), _descriptor6 = _applyDecoratedDescriptor(_class2.prototype, "textureValue", [_dec7], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      }), _descriptor7 = _applyDecoratedDescriptor(_class2.prototype, "numberValue", [_dec8], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return 0;
+        }
+      }), _descriptor8 = _applyDecoratedDescriptor(_class2.prototype, "min", [_dec9], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return 0;
+        }
+      }), _descriptor9 = _applyDecoratedDescriptor(_class2.prototype, "max", [_dec10], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return 1;
+        }
+      })), _class2)) || _class);
+      var EffectController = exports('EffectController', (_dec11 = ccclass('EffectController'), _dec12 = executeInEditMode(true), _dec13 = disallowMultiple(true), _dec14 = property(CCBoolean), _dec15 = property({
+        type: Material,
+        visible: function visible() {
+          return this.addMaterial;
+        }
+      }), _dec16 = property([MaterialProperty]), _dec17 = property(Layout), _dec18 = property(Prefab), _dec19 = property(Prefab), _dec11(_class4 = _dec12(_class4 = _dec13(_class4 = (_class5 = /*#__PURE__*/function (_Component) {
+        _inheritsLoose(EffectController, _Component);
+
+        function EffectController() {
+          var _this;
+
+          for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+          }
+
+          _this = _Component.call.apply(_Component, [this].concat(args)) || this;
+
+          _initializerDefineProperty(_this, "addMaterial", _descriptor10, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "materialList", _descriptor11, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "properties", _descriptor12, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "valueItemContainer", _descriptor13, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "colorPrefab", _descriptor14, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "rangeNumberPrefab", _descriptor15, _assertThisInitialized(_this));
+
+          _this.material = void 0;
+          _this.propertiesMap = new Map();
+          return _this;
+        }
+
+        var _proto2 = EffectController.prototype;
+
+        _proto2.onFocusInEditor = function onFocusInEditor() {
+          this.clear();
+          this.init();
+        };
+
+        _proto2.onEnable = function onEnable() {
+          this.clear();
+          this.init();
+        };
+
+        _proto2.onDisable = function onDisable() {
+          this.clear();
+        };
+
+        _proto2.init = function init() {
+          var _this$node$getCompone,
+              _this2 = this,
+              _this$properties;
+
+          if (this.valueItemContainer == null || this.properties.length == 0) {
+            return;
+          }
+
+          this.material = (_this$node$getCompone = this.node.getComponent(Sprite)) == null ? void 0 : _this$node$getCompone.sharedMaterial;
+          this.propertiesMap.clear();
+          this.properties.forEach(function (prop) {
+            _this2.propertiesMap.set(prop.name, prop);
+          });
+          (_this$properties = this.properties) == null ? void 0 : _this$properties.forEach(function (prop, index) {
+            _this2.createValueItem(prop);
+          });
+        };
+
+        _proto2.clear = function clear() {
+          var _this$valueItemContai, _this$valueItemContai2;
+
+          (_this$valueItemContai = this.valueItemContainer) == null ? void 0 : _this$valueItemContai.node.destroyAllChildren();
+          (_this$valueItemContai2 = this.valueItemContainer) == null ? void 0 : _this$valueItemContai2.node.removeAllChildren();
+          this.propertiesMap.clear();
+        };
+
+        _proto2.setMaterialProperty = function setMaterialProperty(propName, value) {
+          var _this$material;
+
+          (_this$material = this.material) == null ? void 0 : _this$material.setProperty(propName, value);
+          this.materialList.forEach(function (material) {
+            material == null ? void 0 : material.setProperty(propName, value);
+          });
+        };
+
+        _proto2.createValueItem = function createValueItem(prop) {
+          switch (prop.type) {
+            case PropertyType.Color:
+              // 初始化颜色类型的值
+              this.initColor(prop);
+              break;
+
+            case PropertyType.Number:
+              break;
+
+            case PropertyType.RangeNumber:
+              this.initSlider(prop);
+              break;
+
+            case PropertyType.Vector:
+              // 初始化向量类型的值
+              this.initVectorSlider(prop);
+              break;
+
+            case PropertyType.Texture:
+              // 初始化纹理类型的值
+              break;
+
+            default:
+              console.error("Unknown property type: " + prop.type);
+              break;
+          }
+        };
+
+        _proto2.initColor = function initColor(prop) {
+          var _this3 = this;
+
+          if (!this.colorPrefab) {
+            console.error('numberPrefab is null');
+            return;
+          }
+
+          var item = instantiate(this.colorPrefab);
+          this.valueItemContainer.node.addChild(item);
+          item.active = true;
+          var labels = item.getComponentsInChildren(Label);
+          labels[0].string = prop.name; // this.material.setProperty(prop.name, prop.colorValue[0]);
+
+          this.setMaterialProperty(prop.name, prop.colorValue[0]);
+          var colorLayout = item.getComponentInChildren(Layout);
+          var itemNode = item.children[0];
+          itemNode.active = false;
+          prop.colorValue.forEach(function (color, index) {
+            var colorNode = instantiate(itemNode);
+            colorNode.active = true;
+            colorNode.parent = colorLayout.node;
+            var sprite = colorNode.getComponent(Sprite);
+            sprite.color = color;
+            var colorBtn = colorNode.getComponent(Button);
+            colorBtn.transition = Button.Transition.NONE;
+            var checkEventHandler = new EventHandler();
+            checkEventHandler.target = _this3.node;
+            checkEventHandler.component = 'EffectController';
+            checkEventHandler.handler = 'onColorChangeValue';
+            checkEventHandler.customEventData = prop.name;
+            colorBtn.clickEvents.push(checkEventHandler);
+          });
+        };
+
+        _proto2.onColorChangeValue = function onColorChangeValue(button, customEventData) {
+          var prop = this.propertiesMap.get(customEventData);
+          var color = button.target.getComponent(Sprite).color;
+          prop.colorValue[0] = color; // this.material.setProperty(prop.name, color);
+
+          this.setMaterialProperty(prop.name, color);
+        };
+
+        _proto2.initSlider = function initSlider(prop) {
+          if (!this.rangeNumberPrefab) {
+            console.error('numberPrefab is null');
+            return;
+          }
+
+          var item = instantiate(this.rangeNumberPrefab);
+          this.valueItemContainer.node.addChild(item);
+          item.active = true;
+          var labels = item.getComponentsInChildren(Label);
+          labels[0].string = prop.name;
+          labels[1].string = prop.numberValue.toFixed(2); // this.material.setProperty(prop.name, prop.numberValue);
+
+          this.setMaterialProperty(prop.name, prop.numberValue);
+          var slider = item.getComponent(Slider);
+          slider.progress = prop.valueToProgress();
+          var checkEventHandler = new EventHandler();
+          checkEventHandler.target = this.node;
+          checkEventHandler.component = 'EffectController';
+          checkEventHandler.handler = 'onSliderChangeValue';
+          checkEventHandler.customEventData = prop.name;
+          slider == null ? void 0 : slider.slideEvents.push(checkEventHandler);
+        };
+
+        _proto2.onSliderChangeValue = function onSliderChangeValue(slider, customEventData) {
+          var prop = this.propertiesMap.get(customEventData);
+          var value = prop.progressToValue(slider.progress); // this.material.setProperty(prop.name, value);
+
+          this.setMaterialProperty(prop.name, value);
+          var labels = slider.getComponentsInChildren(Label);
+          labels[1].string = value.toFixed(2);
+        };
+
+        _proto2.initVectorSlider = function initVectorSlider(prop) {
+          var values = prop.vectorValue;
+          var names = ['x', 'y', 'z', 'w'];
+
+          for (var i = 0; i < prop.sliderCount; i++) {
+            var valueName = names[i];
+            var _value = values[valueName];
+            var item = instantiate(this.rangeNumberPrefab);
+            this.valueItemContainer.node.addChild(item);
+            item.active = true;
+            var labels = item.getComponentsInChildren(Label);
+            labels[0].string = prop.name + "." + valueName;
+            labels[1].string = _value.toFixed(2);
+            var slider = item.getComponent(Slider);
+            slider.progress = prop.valueToProgress(_value);
+            var checkEventHandler = new EventHandler();
+            checkEventHandler.target = this.node;
+            checkEventHandler.component = 'EffectController';
+            checkEventHandler.handler = 'onVectorSliderChangeValue';
+            checkEventHandler.customEventData = prop.name + "." + valueName;
+            slider == null ? void 0 : slider.slideEvents.push(checkEventHandler);
+          } // this.material.setProperty(prop.name, values);
+
+
+          this.setMaterialProperty(prop.name, values);
+        };
+
+        _proto2.onVectorSliderChangeValue = function onVectorSliderChangeValue(slider, customEventData) {
+          var data = customEventData.split('.');
+          var propName = data[0];
+          var prop = this.propertiesMap.get(propName);
+          var value = prop.progressToValue(slider.progress);
+          var labels = slider.getComponentsInChildren(Label);
+          labels[1].string = value.toFixed(2); // 获取分量名称
+
+          var name = data[1]; // 修改 vectorValue 的对应分量
+
+          var vectorValue = prop.vectorValue;
+          vectorValue[name] = value; // 设置材质的对应属性
+          // this.material.setProperty(propName, vectorValue);
+
+          this.setMaterialProperty(prop.name, vectorValue);
+        };
+
+        return EffectController;
+      }(Component), (_descriptor10 = _applyDecoratedDescriptor(_class5.prototype, "addMaterial", [_dec14], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return false;
+        }
+      }), _descriptor11 = _applyDecoratedDescriptor(_class5.prototype, "materialList", [_dec15], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return [];
+        }
+      }), _descriptor12 = _applyDecoratedDescriptor(_class5.prototype, "properties", [_dec16], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return [];
+        }
+      }), _descriptor13 = _applyDecoratedDescriptor(_class5.prototype, "valueItemContainer", [_dec17], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: null
+      }), _descriptor14 = _applyDecoratedDescriptor(_class5.prototype, "colorPrefab", [_dec18], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: null
+      }), _descriptor15 = _applyDecoratedDescriptor(_class5.prototype, "rangeNumberPrefab", [_dec19], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: null
+      })), _class5)) || _class4) || _class4) || _class4));
+
+      cclegacy._RF.pop();
+    }
+  };
+});
+
+System.register("chunks:///_virtual/main", ['./debug-view-runtime-control.ts', './Controller.ts', './EffectController.ts', './SpriteMask.ts', './SpriteZoom.ts'], function () {
+  return {
+    setters: [null, null, null, null, null],
+    execute: function () {}
+  };
+});
+
+System.register("chunks:///_virtual/SpriteMask.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc'], function (exports) {
+  var _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, cclegacy, _decorator, Material, Texture2D, Sprite, Node, view, Vec2, Component;
+
+  return {
+    setters: [function (module) {
+      _applyDecoratedDescriptor = module.applyDecoratedDescriptor;
+      _inheritsLoose = module.inheritsLoose;
+      _initializerDefineProperty = module.initializerDefineProperty;
+      _assertThisInitialized = module.assertThisInitialized;
+    }, function (module) {
+      cclegacy = module.cclegacy;
+      _decorator = module._decorator;
+      Material = module.Material;
+      Texture2D = module.Texture2D;
+      Sprite = module.Sprite;
+      Node = module.Node;
+      view = module.view;
+      Vec2 = module.Vec2;
+      Component = module.Component;
+    }],
+    execute: function () {
+      var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _class, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4;
+
+      cclegacy._RF.push({}, "ecf0f/zAL5GtKt8rqRIhmEQ", "SpriteMask", undefined);
+
+      var ccclass = _decorator.ccclass,
+          property = _decorator.property,
+          executeInEditMode = _decorator.executeInEditMode,
+          disallowMultiple = _decorator.disallowMultiple;
+      var SpriteMask = exports('SpriteMask', (_dec = ccclass('SpriteMask'), _dec2 = executeInEditMode(true), _dec3 = disallowMultiple(true), _dec4 = property(Material), _dec5 = property(Texture2D), _dec6 = property({
+        range: [0.01, 0.5],
+        slide: true,
+        step: 0.01
+      }), _dec7 = property({
+        range: [0.0, 0.2],
+        slide: true,
+        step: 0.01
+      }), _dec(_class = _dec2(_class = _dec3(_class = (_class2 = /*#__PURE__*/function (_Component) {
+        _inheritsLoose(SpriteMask, _Component);
+
+        function SpriteMask() {
+          var _this;
+
+          for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+          }
+
+          _this = _Component.call.apply(_Component, [this].concat(args)) || this;
+
+          _initializerDefineProperty(_this, "material", _descriptor, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "frontTexture", _descriptor2, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "size", _descriptor3, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "smoothness", _descriptor4, _assertThisInitialized(_this));
+
+          return _this;
+        }
+
+        var _proto = SpriteMask.prototype;
+
+        _proto.start = function start() {};
+
+        _proto.onEnable = function onEnable() {
+          var renderer = this.getComponent(Sprite);
+          this.material = renderer.sharedMaterial;
+          this.node.on(Node.EventType.MOUSE_MOVE, function (event) {
+            if (event.getButton() === 0) {
+              var pos = event.getLocation();
+              this.updateZoomCenter(pos);
+            }
+          }, this);
+        };
+
+        _proto.onDisable = function onDisable() {
+          this.node.off(Node.EventType.MOUSE_MOVE);
+        };
+
+        _proto.updateZoomCenter = function updateZoomCenter(pos) {
+          var _this$material;
+
+          var screenSize = view.getVisibleSize();
+          var uv = new Vec2(pos.x / screenSize.width, pos.y / screenSize.height);
+          uv.y = 1 - uv.y;
+          (_this$material = this.material) == null ? void 0 : _this$material.setProperty('center', uv);
+        };
+
+        _proto.onFocusInEditor = function onFocusInEditor() {
+          console.log('onFocusInEditor');
+        };
+
+        _proto.update = function update(deltaTime) {};
+
+        return SpriteMask;
+      }(Component), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, "material", [_dec4], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, "frontTexture", [_dec5], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, "size", [_dec6], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return 0.3;
+        }
+      }), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, "smoothness", [_dec7], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return 0.01;
+        }
+      })), _class2)) || _class) || _class) || _class));
+
+      cclegacy._RF.pop();
+    }
+  };
+});
+
+System.register("chunks:///_virtual/SpriteZoom.ts", ['./rollupPluginModLoBabelHelpers.js', 'cc', './env'], function (exports) {
+  var _applyDecoratedDescriptor, _inheritsLoose, _initializerDefineProperty, _assertThisInitialized, cclegacy, _decorator, Material, Sprite, Node, view, Vec2, Component, EDITOR;
+
+  return {
+    setters: [function (module) {
+      _applyDecoratedDescriptor = module.applyDecoratedDescriptor;
+      _inheritsLoose = module.inheritsLoose;
+      _initializerDefineProperty = module.initializerDefineProperty;
+      _assertThisInitialized = module.assertThisInitialized;
+    }, function (module) {
+      cclegacy = module.cclegacy;
+      _decorator = module._decorator;
+      Material = module.Material;
+      Sprite = module.Sprite;
+      Node = module.Node;
+      view = module.view;
+      Vec2 = module.Vec2;
+      Component = module.Component;
+    }, function (module) {
+      EDITOR = module.EDITOR;
+    }],
+    execute: function () {
+      var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _class, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4;
+
+      cclegacy._RF.push({}, "e8d24Ba3atBBI8tZ8ltP3Bs", "SpriteZoom", undefined);
+
+      var ccclass = _decorator.ccclass,
+          property = _decorator.property,
+          executeInEditMode = _decorator.executeInEditMode,
+          disallowMultiple = _decorator.disallowMultiple;
+      var SpriteZoom = exports('SpriteZoom', (_dec = ccclass('SpriteZoom'), _dec2 = executeInEditMode(true), _dec3 = disallowMultiple(true), _dec4 = property(Material), _dec5 = property({
+        range: [0.01, 0.5],
+        slide: true,
+        step: 0.01
+      }), _dec6 = property({
+        range: [0.0, 0.2],
+        slide: true,
+        step: 0.01
+      }), _dec7 = property({
+        range: [-2.0, 2.0],
+        slide: true,
+        step: 0.01
+      }), _dec(_class = _dec2(_class = _dec3(_class = (_class2 = /*#__PURE__*/function (_Component) {
+        _inheritsLoose(SpriteZoom, _Component);
+
+        function SpriteZoom() {
+          var _this;
+
+          for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+          }
+
+          _this = _Component.call.apply(_Component, [this].concat(args)) || this;
+
+          _initializerDefineProperty(_this, "material", _descriptor, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "size", _descriptor2, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "edgeFactor", _descriptor3, _assertThisInitialized(_this));
+
+          _initializerDefineProperty(_this, "zoomFactor", _descriptor4, _assertThisInitialized(_this));
+
+          return _this;
+        }
+
+        var _proto = SpriteZoom.prototype;
+
+        _proto.start = function start() {};
+
+        _proto.onEnable = function onEnable() {
+          var renderer = this.getComponent(Sprite);
+          this.material = renderer.sharedMaterial;
+          this.node.on(Node.EventType.MOUSE_MOVE, function (event) {
+            if (event.getButton() === 0) {
+              var pos = event.getLocation();
+              this.updateZoomCenter(pos);
+            }
+          }, this);
+        };
+
+        _proto.onDisable = function onDisable() {
+          this.node.off(Node.EventType.MOUSE_MOVE);
+        };
+
+        _proto.updateZoomCenter = function updateZoomCenter(pos) {
+          var _this$material;
+
+          var screenSize = view.getVisibleSize();
+          var uv = new Vec2(pos.x / screenSize.width, pos.y / screenSize.height);
+          uv.y = 1 - uv.y;
+          (_this$material = this.material) == null ? void 0 : _this$material.setProperty('center', uv);
+        };
+
+        _proto.onFocusInEditor = function onFocusInEditor() {
+          console.log('onFocusInEditor');
+        };
+
+        _proto.update = function update(deltaTime) {
+          console.log("EDITOR:", EDITOR);
+        };
+
+        return SpriteZoom;
+      }(Component), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, "material", [_dec4], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return null;
+        }
+      }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, "size", [_dec5], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return 0.3;
+        }
+      }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, "edgeFactor", [_dec6], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return 0.1;
+        }
+      }), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, "zoomFactor", [_dec7], {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        initializer: function initializer() {
+          return 0.2;
+        }
+      })), _class2)) || _class) || _class) || _class));
+
+      cclegacy._RF.pop();
+    }
+  };
+});
 
 (function(r) {
   r('virtual:///prerequisite-imports/main', 'chunks:///_virtual/main'); 
