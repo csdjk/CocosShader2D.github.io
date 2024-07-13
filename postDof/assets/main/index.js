@@ -920,8 +920,8 @@ System.register("chunks:///_virtual/MaterialProperty.ts", ['./rollupPluginModLoB
           disallowMultiple = _decorator.disallowMultiple;
       var PropertyType = exports('PropertyType', /*#__PURE__*/function (PropertyType) {
         PropertyType[PropertyType["Color"] = 0] = "Color";
-        PropertyType[PropertyType["Number"] = 1] = "Number";
-        PropertyType[PropertyType["RangeNumber"] = 2] = "RangeNumber";
+        PropertyType[PropertyType["Float"] = 1] = "Float";
+        PropertyType[PropertyType["Int"] = 2] = "Int";
         PropertyType[PropertyType["Vector"] = 3] = "Vector";
         PropertyType[PropertyType["Texture"] = 4] = "Texture";
         return PropertyType;
@@ -953,17 +953,17 @@ System.register("chunks:///_virtual/MaterialProperty.ts", ['./rollupPluginModLoB
       }), _dec8 = property({
         type: Number,
         visible: function visible() {
-          return this.type == PropertyType.Number || this.type == PropertyType.RangeNumber;
+          return this.type == PropertyType.Int || this.type == PropertyType.Float;
         }
       }), _dec9 = property({
         type: Number,
         visible: function visible() {
-          return this.type == PropertyType.RangeNumber || this.type == PropertyType.Vector;
+          return this.type == PropertyType.Int || this.type == PropertyType.Float || this.type == PropertyType.Vector;
         }
       }), _dec10 = property({
         type: Number,
         visible: function visible() {
-          return this.type == PropertyType.RangeNumber || this.type == PropertyType.Vector;
+          return this.type == PropertyType.Int || this.type == PropertyType.Float || this.type == PropertyType.Vector;
         }
       }), _dec(_class = (_class2 = /*#__PURE__*/function () {
         function MaterialProperty(parameters) {
@@ -994,8 +994,12 @@ System.register("chunks:///_virtual/MaterialProperty.ts", ['./rollupPluginModLoB
 
         var _proto = MaterialProperty.prototype;
 
-        _proto.progressToValue = function progressToValue(progress) {
+        _proto.progressToFloat = function progressToFloat(progress) {
           return this.min + (this.max - this.min) * progress;
+        };
+
+        _proto.progressToInt = function progressToInt(progress) {
+          return Math.round(this.min + (this.max - this.min) * progress);
         };
 
         _proto.valueToProgress = function valueToProgress(value) {
@@ -1019,7 +1023,7 @@ System.register("chunks:///_virtual/MaterialProperty.ts", ['./rollupPluginModLoB
         enumerable: true,
         writable: true,
         initializer: function initializer() {
-          return PropertyType.RangeNumber;
+          return PropertyType.Float;
         }
       }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, "colorValue", [_dec4], {
         configurable: true,
@@ -1278,10 +1282,11 @@ System.register("chunks:///_virtual/PostProcessController.ts", ['./rollupPluginM
               this.initColor(prop);
               break;
 
-            case PropertyType.Number:
+            case PropertyType.Int:
+              this.initSlider(prop);
               break;
 
-            case PropertyType.RangeNumber:
+            case PropertyType.Float:
               this.initSlider(prop);
               break;
 
@@ -1352,8 +1357,7 @@ System.register("chunks:///_virtual/PostProcessController.ts", ['./rollupPluginM
           item.active = true;
           var labels = item.getComponentsInChildren(Label);
           labels[0].string = prop.name;
-          labels[1].string = prop.numberValue.toFixed(2); // this.material.setProperty(prop.name, prop.numberValue);
-
+          labels[1].string = prop.numberValue.toFixed(2);
           this.setMaterialProperty(prop.name, prop.numberValue);
           var slider = item.getComponent(Slider);
           slider.progress = prop.valueToProgress();
@@ -1367,7 +1371,13 @@ System.register("chunks:///_virtual/PostProcessController.ts", ['./rollupPluginM
 
         _proto.onSliderChangeValue = function onSliderChangeValue(slider, customEventData) {
           var prop = this.propertiesMap.get(customEventData);
-          var value = prop.progressToValue(slider.progress); // this.material.setProperty(prop.name, value);
+          var value;
+
+          if (prop.type == PropertyType.Float) {
+            value = prop.progressToFloat(slider.progress);
+          } else {
+            value = prop.progressToInt(slider.progress);
+          }
 
           this.setMaterialProperty(prop.name, value);
           var labels = slider.getComponentsInChildren(Label);
@@ -1405,7 +1415,7 @@ System.register("chunks:///_virtual/PostProcessController.ts", ['./rollupPluginM
           var data = customEventData.split('.');
           var propName = data[0];
           var prop = this.propertiesMap.get(propName);
-          var value = prop.progressToValue(slider.progress);
+          var value = prop.progressToFloat(slider.progress);
           var labels = slider.getComponentsInChildren(Label);
           labels[1].string = value.toFixed(2); // 获取分量名称
 
